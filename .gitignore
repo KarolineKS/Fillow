@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+
+# Build & Release Outputs
+dist/
+dist-ssr/
+build/
+out/
+release/
+*.local
+
+# Chrome Extension Packaging & Keys
+*.crx
+*.pem
+*.zip
+*.tar.gz
+*.tgz
+
+# TypeScript & Bundler Caches
+*.tsbuildinfo
+.vite/
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# Testing & Coverage (Vitest / Playwright)
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# AI Coding Agents, TLC Specs/Design & Local Prompts (Never committed to public Git)
+.agent/
+.agents/
+.specs/
+.design/
+.claude/
+.cursor/
+.windsurf/
+.kilo/
+.kiro/
+.copilot/
+GEMINI.md
+CLAUDE.md
+AGENTS.md
+CODEBUDDY.md
+
+# Graphify Generated Outputs & Cache
+graphify-out/
+.graphify_analysis.json
+.graphify_labels.json
+raw/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Logs & Diagnostic Reports
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# macOS, Windows & Linux OS Metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# IDEs & Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
