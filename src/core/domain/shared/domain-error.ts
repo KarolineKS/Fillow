@@ -1,11 +1,3 @@
-/**
- * Structured, serializable domain errors.
- *
- * Every failure carries a stable machine-readable `code`, a human-readable
- * English `message`, and an optional plain-language `explanation` suitable
- * for display in the junior-friendly QA UI.
- */
-
 export type DomainErrorCode =
   | "INVALID_FORMAT"
   | "INVALID_CHECK_DIGIT"
@@ -18,6 +10,7 @@ export type DomainErrorCode =
 export interface DomainError {
   readonly code: DomainErrorCode;
   readonly message: string;
+  /** Plain-language text surfaced in the junior-friendly QA UI. */
   readonly explanation?: string;
 }
 
