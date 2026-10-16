@@ -1,0 +1,22 @@
+{
+  "name": "fillow",
+  "version": "0.1.0",
+  "description": "Less typing. More doing. Chrome MV3 extension to smart-fill and QA-audit Brazilian web forms.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "2.1.8",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  }
+}
