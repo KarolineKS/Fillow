@@ -1,7 +1,3 @@
-/**
- * The 27 Brazilian federative units (26 states + the Federal District).
- */
-
 export const BRAZILIAN_STATES = [
   "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO",
   "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI",
