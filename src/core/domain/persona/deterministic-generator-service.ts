@@ -14,6 +14,7 @@ import { BRAZILIAN_STATES, isStateUf, type StateUf } from "../shared/state-uf";
 import { BirthDate } from "./birth-date";
 import { CITIES, FIRST_NAMES, NEIGHBORHOODS, RESERVED_EMAIL_DOMAINS, STREET_TYPES, SURNAMES } from "./name-catalog";
 import type { Persona, PersonaBatchRequest, PersonaRequest } from "./persona";
+import { invalidPayload } from "../testing/invalid-payloads";
 
 const DEFAULT_MIN_AGE = 18;
 const DEFAULT_MAX_AGE = 80;
@@ -151,4 +152,7 @@ export const DeterministicGeneratorService = {
       return Result.ok(personas);
     });
   },
+
+  /** Data a correct form must reject for `fieldType`, with the reason it should. */
+  invalidPayload,
 } as const;
