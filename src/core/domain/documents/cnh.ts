@@ -57,12 +57,18 @@ export const Cnh = {
   },
 
   generate(random: RandomSource): Cnh {
-    let candidate = "";
-    do {
-      const base = randomDigits(random, 9);
-      candidate = base + checkDigits(base);
-    } while (candidate.length !== 11 || allSameDigit(candidate));
-    return fromDigits(candidate);
+    const drawn = randomDigits(random, 9);
+    const lastDigit = Number(drawn.slice(-1));
+    // The last base digit has weight 1 in the first sum, so at most one of ten
+    // consecutive values overflows: the bounded walk always finds an issuable number.
+    for (let step = 0; step < 10; step += 1) {
+      const base = drawn.slice(0, -1) + String((lastDigit + step) % 10);
+      const candidate = base + checkDigits(base);
+      if (candidate.length === 11 && !allSameDigit(candidate)) {
+        return fromDigits(candidate);
+      }
+    }
+    throw new RangeError("unreachable: no issuable CNH among ten consecutive bases");
   },
 
   checkDigits,

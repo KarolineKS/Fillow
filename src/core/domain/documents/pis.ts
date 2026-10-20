@@ -1,8 +1,8 @@
 import type { DomainError } from "../shared/domain-error";
-import { allSameDigit, mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
+import { mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
 import { Result } from "../shared/result";
 import type { RandomSource } from "../shared/seeded-random";
-import { applyMask, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
+import { applyMask, avoidRepeated, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
 
 /** PIS/PASEP/NIS share one number space and one check digit. */
 export interface Pis {
@@ -32,10 +32,7 @@ export const Pis = {
   },
 
   generate(random: RandomSource): Pis {
-    let base = randomDigits(random, 10);
-    while (allSameDigit(base)) {
-      base = randomDigits(random, 10);
-    }
+    const base = avoidRepeated(randomDigits(random, 10));
     return fromDigits(base + checkDigit(base));
   },
 
