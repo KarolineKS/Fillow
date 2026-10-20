@@ -5,7 +5,7 @@ export interface RandomSource {
 }
 
 /**
- * mulberry32 PRNG, chosen over `Math.random` so generation is reproducible
+ * mulberry32 PRNG, chosen over the unseeded global generator so generation is reproducible
  * under a given seed, keeping tests stable and batch personas non-colliding.
  */
 export class SeededRandom implements RandomSource {
