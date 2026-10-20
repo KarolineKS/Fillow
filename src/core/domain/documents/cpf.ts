@@ -1,8 +1,8 @@
 import type { DomainError } from "../shared/domain-error";
-import { allSameDigit, mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
+import { mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
 import { Result } from "../shared/result";
 import type { RandomSource } from "../shared/seeded-random";
-import { applyMask, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
+import { applyMask, avoidRepeated, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
 
 export interface Cpf {
   readonly digits: string;
@@ -34,10 +34,7 @@ export const Cpf = {
   },
 
   generate(random: RandomSource): Cpf {
-    let base = randomDigits(random, 9);
-    while (allSameDigit(base)) {
-      base = randomDigits(random, 9);
-    }
+    const base = avoidRepeated(randomDigits(random, 9));
     return fromDigits(base + checkDigits(base));
   },
 

@@ -42,6 +42,15 @@ export function randomDigits(random: { nextInt(min: number, max: number): number
   return digits;
 }
 
+/** Breaks a single-repeated-digit base by bumping its last digit, so generation never loops. */
+export function avoidRepeated(base: string): string {
+  if (base.length > 1 && /^(\d)\1*$/.test(base)) {
+    const last = Number(base.slice(-1));
+    return base.slice(0, -1) + String((last + 1) % 10);
+  }
+  return base;
+}
+
 export function applyMask(digits: string, mask: string): string {
   let cursor = 0;
   let output = "";

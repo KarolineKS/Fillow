@@ -1,8 +1,8 @@
 import type { DomainError } from "../shared/domain-error";
-import { allSameDigit, mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
+import { mod11CheckDigit, toDigitArray } from "../shared/digit-utils";
 import { Result } from "../shared/result";
 import type { RandomSource } from "../shared/seeded-random";
-import { applyMask, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
+import { applyMask, avoidRepeated, extractDigits, randomDigits, wrongCheckDigit } from "./document-parsing";
 
 export interface Cnpj {
   readonly digits: string;
@@ -35,11 +35,7 @@ export const Cnpj = {
   },
 
   generate(random: RandomSource): Cnpj {
-    let root = randomDigits(random, 8);
-    while (allSameDigit(root)) {
-      root = randomDigits(random, 8);
-    }
-    const base = root + HEADQUARTERS_BRANCH;
+    const base = avoidRepeated(randomDigits(random, 8)) + HEADQUARTERS_BRANCH;
     return fromDigits(base + checkDigits(base));
   },
 
