@@ -1,6 +1,6 @@
 import type { StateUf } from "../shared/state-uf";
 
-/** Plain readonly data: it crosses chrome.runtime messaging, which drops class instances (AD-001). */
+/** Plain readonly data: it crosses extension messaging, which drops class instances (AD-001). */
 export interface Persona {
   readonly fullName: string;
   readonly email: string;
